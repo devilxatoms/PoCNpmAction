@@ -1,8 +1,9 @@
 const core = require("@actions/core");
-//const github = require("@actions/github");
+// const github = require("@actions/github");
 const { parseXmlReport } = require("./src/parseXmlReport");
 
-/* try {
+/* 
+try {
   // `who-to-greet` input defined in action metadata file
   const nameToGreet = core.getInput("who-to-greet");
   console.log(`Hello ${nameToGreet}!`);
@@ -13,33 +14,38 @@ const { parseXmlReport } = require("./src/parseXmlReport");
   console.log(`The event payload: ${payload}`);
 } catch (error) {
   core.setFailed(error.message);
-} */
+}
+*/
 
+// Function to transform operations data into table format
 function transformToTableData(operations) {
   const tableData = [];
+
   operations.Operation.forEach((operation) => {
     if (Array.isArray(operation.Item)) {
       operation.Item.forEach((item) => {
-        tableData.push([operation.Name, item.Value, item.Type]);
+        const { Name } = operation;
+        const { Value, Type } = item;
+        tableData.push([Name, Value, Type]);
       });
     } else {
-      tableData.push([
-        operation.Name,
-        operation.Item.Value,
-        operation.Item.Type,
-      ]);
+      const { Name } = operation;
+      const { Value, Type } = operation.Item;
+      tableData.push([Name, Value, Type]);
     }
   });
+
   return tableData;
 }
 
-//  read xml file
+// Read XML file and process the data
 const xmlFilePath = "dummyData/dummy.xml";
 
 parseXmlReport(xmlFilePath)
   .then((result) => {
     const tableData = transformToTableData(result.DeploymentReport.Operations);
-    //console.log(">>>Table Data:", tableData);
+
+    // Async function to run the workflow steps
     async function run() {
       await core.summary
         .addHeading("SQL Changes Applied")
@@ -50,7 +56,7 @@ parseXmlReport(xmlFilePath)
             { data: "Type", header: true },
           ],
           ...tableData,
-          // Agrega más filas según sea necesario
+          // Add more rows as needed
         ])
         .write();
     }
