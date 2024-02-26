@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DeploymentReport xmlns="http://schemas.microsoft.com/sqlserver/dac/DeployReport/2012/02">
+  <Alerts />
+  <Operations>
+    <Operation Name="Create">
+      <Item Value="[dbo].[DummyTable1]" Type="SqlTable" />
+    </Operation>
+    <Operation Name="Alter">
+      <Item Value="[dbo].[DummyFunction1]" Type="SqlScalarFunction" />
+      <Item Value="[dbo].[DummyFunction2]" Type="SqlScalarFunction" />
+      <Item Value="[dbo].[DummyFunction3]" Type="SqlScalarFunction" />
+      <Item Value="[dbo].[DummyFunction4]" Type="SqlScalarFunction" />
+      <Item Value="[dbo].[DummyFunction5]" Type="SqlScalarFunction" />
+      <Item Value="[dbo].[DummyTable2]" Type="SqlTable" />
+      <Item Value="[dbo].[DummyTable3]" Type="SqlTable" />
+    </Operation>
+    <Operation Name="Refresh">
+      <Item Value="[dbo].[DummyProcedure1]" Type="SqlProcedure" />
+      <Item Value="[dbo].[DummyProcedure2]" Type="SqlProcedure" />
+    </Operation>
+  </Operations>
+</DeploymentReport>

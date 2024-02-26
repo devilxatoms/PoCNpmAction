@@ -1,5 +1,6 @@
 const core = require("@actions/core");
 const github = require("@actions/github");
+const {parseXmlReport} = require("./src/parseXmlReport");
 
 try {
   // `who-to-greet` input defined in action metadata file
@@ -14,7 +15,20 @@ try {
   core.setFailed(error.message);
 }
 
-// Wrap the code block containing `await` inside an asynchronous function
+
+//  read xml file
+const xmlFilePath = core.getInput("dummyData/dummy.xml");
+parseXmlReport(xmlFilePath, (err, result) => {
+  if (err) {
+    core.setFailed(err);
+    return;
+  }
+  console.log(result);
+});
+
+
+
+/* // Wrap the code block containing `await` inside an asynchronous function
 async function run() {
   await core.summary
     .addHeading("SQL Changes Applied")
@@ -40,4 +54,4 @@ async function run() {
 }
 
 // Call the asynchronous function
-run();
+run(); */
