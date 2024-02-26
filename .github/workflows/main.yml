@@ -11,3 +11,7 @@ jobs:
       - name: Hello world action step
         id: hello
         uses: devilxatoms/PoCNpmAction@v1.35
+
+      - name: add summary
+        id: hello
+        uses: devilxatoms/PoCNpmAction@v1.35
