@@ -18,8 +18,7 @@ const { parseXmlReport } = require("./src/parseXmlReport");
 //  read xml file
 const xmlFilePath = "dummyData/dummy.xml";
 
-parseXmlReport
-  .parseXmlReport(xmlFilePath)
+parseXmlReport(xmlFilePath)
   .then((result) => {
     console.log(result.DeploymentReport.Operations);
     console.log(

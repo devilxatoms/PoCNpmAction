@@ -33243,8 +33243,7 @@ const { parseXmlReport } = __nccwpck_require__(3877);
 //  read xml file
 const xmlFilePath = "dummyData/dummy.xml";
 
-parseXmlReport
-  .parseXmlReport(xmlFilePath)
+parseXmlReport(xmlFilePath)
   .then((result) => {
     console.log(result.DeploymentReport.Operations);
     console.log(
