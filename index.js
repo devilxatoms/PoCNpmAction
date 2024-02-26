@@ -17,7 +17,7 @@ try {
 
 
 //  read xml file
-const xmlFilePath = core.getInput("dummyData/dummy.xml");
+const xmlFilePath = "dummyData/dummy.xml";
 xmlResult = parseXmlReport(xmlFilePath, (err, result) => {
   if (err) {
     core.setFailed(err);
