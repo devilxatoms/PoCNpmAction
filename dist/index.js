@@ -33250,10 +33250,16 @@ function transformToTableData(operations) {
   ]);
   operations.Operation.forEach((operation) => {
     console.log("---- Operation foreach: ", operation);
-    operation.Item.forEach((item) => {
-      console.log("Value: ", item.Value);
-      console.log("Type: ", item.Type);
-    });
+    if (isArray(operation.Item)) {
+      operation.Item.forEach((item) => {
+        console.log("Value: ", item.Value);
+        console.log("Type: ", item.Type);
+      });
+    } else {
+      console.log("Value: ", operation.Item.Value);
+      console.log("Type: ", operation.Item.Type);
+    }
+
     //tableData.push([operation.Name, operation.ItemValue, operation.Type]);
   });
   console.log("Table Data: ", tableData);
@@ -33269,7 +33275,6 @@ parseXmlReport(xmlFilePath)
     console.log("Result operations: ", result.DeploymentReport.Operations);
     const tableData = transformToTableData(result.DeploymentReport.Operations);
     //console.log("Table Data:", tableData);
-
   })
   .catch((err) => {
     console.error(err);
