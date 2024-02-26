@@ -24,13 +24,15 @@ function transformToTableData(operations) {
     { data: "Type", header: true },
   ]);
   operations.Operation.forEach((operation) => {
-    console.log("---- Operation foreach: ", operation);
+    //console.log("---- Operation foreach: ", operation);
     if (Array.isArray(operation.Item)) {
       operation.Item.forEach((item) => {
+        console.log("Operation Name: ", operation.Name)
         console.log("Value: ", item.Value);
         console.log("Type: ", item.Type);
       });
     } else {
+      console.log("Operation Name: ", operation.Name)
       console.log("Value: ", operation.Item.Value);
       console.log("Type: ", operation.Item.Type);
     }
