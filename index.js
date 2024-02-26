@@ -38,6 +38,8 @@ const xmlFilePath = "dummyData/dummy.xml";
 
 parseXmlReport(xmlFilePath)
   .then((result) => {
+    console.log("Result: ", result);
+    console.log("Result operations: ", result.DeploymentReport.Operations);
     const tableData = transformToTableData(result.DeploymentReport.Operations);
     console.log("Table Data:", tableData);
 
