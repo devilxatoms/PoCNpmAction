@@ -17,25 +17,18 @@ const { parseXmlReport } = require("./src/parseXmlReport");
 
 function transformToTableData(operations) {
   console.log("Operations: ", operations);
-  return [operations].flatMap((operation) => {
-    console.log("--Operation: ", operation);
-    const operationName = operation.Name;
-    console.log("Operation Name: ", operationName);
-    
-    if (operation.Item) {
-      const items = Array.isArray(operation.Item) ? operation.Item : [operation.Item];
-      console.log("Items: ", items);
-
-      return items.map((item) => {
-        const value = item.Value || ''; // Asegurarse de que 'Value' no sea undefined
-        const type = item.Type || ''; // Asegurarse de que 'Type' no sea undefined
-        console.log("Result: ", [operationName, value, type]);
-        return [operationName, value, type];
-      });
-    }
-
-    return [];
+  const tableData = [];
+  tableData.push([
+    { data: "Operation Name", header: true },
+    { data: "Item Value", header: true },
+    { data: "Type", header: true },
+  ]);
+  operations.Operation.forEach((operation) => {
+    console.log("Operation foreach: ", operation);
+    //tableData.push([operation.Name, operation.ItemValue, operation.Type]);
   });
+  console.log("Table Data: ", tableData);
+  return tableData;
 }
 
 //  read xml file
