@@ -33240,16 +33240,23 @@ const { parseXmlReport } = __nccwpck_require__(3877);
   core.setFailed(error.message);
 } */
 
+function transformToTableData(operations) {
+  return operations.flatMap((operation) => {
+    const operationName = operation.Name;
+    const items = Array.isArray(operation.Item) ? operation.Item : [operation.Item];
+
+    return items.map((item) => [operationName, item.Value, item.Type]);
+  });
+}
+
 //  read xml file
 const xmlFilePath = "dummyData/dummy.xml";
 
 parseXmlReport(xmlFilePath)
   .then((result) => {
-    console.log(result.DeploymentReport.Operations);
-    console.log(
-      "JSON DATA: ",
-      JSON.stringify(result.DeploymentReport.Operations)
-    );
+    const tableData = transformToTableData(result.DeploymentReport.Operations);
+    console.log("Table Data:", tableData);
+
   })
   .catch((err) => {
     console.error(err);
