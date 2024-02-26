@@ -12,6 +12,7 @@ function parseXmlReport(xmlFilePath, callback) {
         callback(err, null);
         return;
       }
+      console.log("-----> result: ", result);
       callback(null, result);
     }
   );
