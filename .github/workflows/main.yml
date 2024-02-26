@@ -10,7 +10,7 @@ jobs:
 
       - name: Hello world action step
         id: hello
-        uses: devilxatoms/PoCNpmAction@v1.11
+        uses: devilxatoms/PoCNpmAction@v1.12
         with:
           who-to-greet: 'Mona the Octocat'
       # Use the output from the `hello` step
