@@ -33241,7 +33241,7 @@ const { parseXmlReport } = __nccwpck_require__(3877);
 } */
 
 function transformToTableData(operations) {
-  return operations.flatMap((operation) => {
+  return [operations].flatMap((operation) => {
     const operationName = operation.Name;
     const items = Array.isArray(operation.Item) ? operation.Item : [operation.Item];
 
