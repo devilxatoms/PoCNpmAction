@@ -18,9 +18,18 @@ const { parseXmlReport } = require("./src/parseXmlReport");
 function transformToTableData(operations) {
   return [operations].flatMap((operation) => {
     const operationName = operation.Name;
-    const items = Array.isArray(operation.Item) ? operation.Item : [operation.Item];
+    
+    if (operation.Item) {
+      const items = Array.isArray(operation.Item) ? operation.Item : [operation.Item];
 
-    return items.map((item) => [operationName, item.Value, item.Type]);
+      return items.map((item) => {
+        const value = item.Value || ''; // Asegurarse de que 'Value' no sea undefined
+        const type = item.Type || ''; // Asegurarse de que 'Type' no sea undefined
+        return [operationName, value, type];
+      });
+    }
+
+    return [];
   });
 }
 
