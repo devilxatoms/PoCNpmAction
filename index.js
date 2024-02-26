@@ -24,7 +24,7 @@ const xmlFilePath = "dummyData/dummy.xml";
     const dataResult = await parseXmlReport(xmlFilePath);
     console.log("Data result: ", dataResult);
   } catch (error) {
-    core.setFailed(err);
+    core.setFailed(error);
   }
 })();
 
