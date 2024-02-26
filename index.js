@@ -1,6 +1,6 @@
 const core = require("@actions/core");
 const github = require("@actions/github");
-const {parseXmlReport} = require("./src/parseXmlReport");
+const { parseXmlReport } = require("./src/parseXmlReport");
 
 try {
   // `who-to-greet` input defined in action metadata file
@@ -15,10 +15,9 @@ try {
   core.setFailed(error.message);
 }
 
-
 //  read xml file
 const xmlFilePath = "dummyData/dummy.xml";
-xmlResult = parseXmlReport(xmlFilePath, (err, result) => {
+const xmlResult = parseXmlReport(xmlFilePath, (err, result) => {
   if (err) {
     core.setFailed(err);
     return;
@@ -26,8 +25,6 @@ xmlResult = parseXmlReport(xmlFilePath, (err, result) => {
   return result;
 });
 console.log(xmlResult);
-
-
 
 /* // Wrap the code block containing `await` inside an asynchronous function
 async function run() {

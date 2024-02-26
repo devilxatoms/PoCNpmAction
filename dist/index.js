@@ -37490,7 +37490,7 @@ var __webpack_exports__ = {};
 (() => {
 const core = __nccwpck_require__(4147);
 const github = __nccwpck_require__(7364);
-const {parseXmlReport} = __nccwpck_require__(3877);
+const { parseXmlReport } = __nccwpck_require__(3877);
 
 try {
   // `who-to-greet` input defined in action metadata file
@@ -37505,10 +37505,9 @@ try {
   core.setFailed(error.message);
 }
 
-
 //  read xml file
 const xmlFilePath = "dummyData/dummy.xml";
-xmlResult = parseXmlReport(xmlFilePath, (err, result) => {
+const xmlResult = parseXmlReport(xmlFilePath, (err, result) => {
   if (err) {
     core.setFailed(err);
     return;
@@ -37516,8 +37515,6 @@ xmlResult = parseXmlReport(xmlFilePath, (err, result) => {
   return result;
 });
 console.log(xmlResult);
-
-
 
 /* // Wrap the code block containing `await` inside an asynchronous function
 async function run() {
