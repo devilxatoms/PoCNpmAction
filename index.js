@@ -17,8 +17,8 @@ const { parseXmlReport } = require("./src/parseXmlReport");
 
 function transformToTableData(operations) {
   console.log("Operations: ", operations);
-  return [operations].flatMap((operation) => {
-    const operationName = operation.Name;
+  return [operations].flatMap((Operation) => {
+    const operationName = Operation.Name;
     console.log("Operation Name: ", operationName);
     
     if (operation.Item) {
