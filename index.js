@@ -39,7 +39,7 @@ const xmlFilePath = "dummyData/dummy.xml";
 parseXmlReport(xmlFilePath)
   .then((result) => {
     const tableData = transformToTableData(result.DeploymentReport.Operations);
-    console.log(">>>Table Data:", tableData);
+    //console.log(">>>Table Data:", tableData);
     async function run() {
       await core.summary
         .addHeading("SQL Changes Applied")
