@@ -7,10 +7,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        
+
       - name: Hello world action step
         id: hello
-        uses: devilxatoms/PoCNpmAction@v1.7
+        uses: devilxatoms/PoCNpmAction@v1.8
         with:
           who-to-greet: 'Mona the Octocat'
       # Use the output from the `hello` step
