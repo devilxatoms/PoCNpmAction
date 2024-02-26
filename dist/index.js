@@ -33243,14 +33243,16 @@ const { parseXmlReport } = __nccwpck_require__(3877);
 
 //  read xml file
 const xmlFilePath = "dummyData/dummy.xml";
-parseXmlReport(xmlFilePath, (err, result) => {
+var dataResult = parseXmlReport(xmlFilePath, (err, result) => {
   if (err) {
     core.setFailed(err);
     return;
   }
-  console.log(result);
+  console.log(result.DeploymentReport.Operations);
+  return result;
 });
 
+console.log("Data result: ",dataResult);
 
 /* // Wrap the code block containing `await` inside an asynchronous function
 async function run() {
