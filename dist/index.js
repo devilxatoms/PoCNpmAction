@@ -33243,28 +33243,15 @@ const { parseXmlReport } = __nccwpck_require__(3877);
 function transformToTableData(operations) {
   console.log("Operations: ", operations);
   const tableData = [];
-  tableData.push([
-    { data: "Operation Name", header: true },
-    { data: "Item Value", header: true },
-    { data: "Type", header: true },
-  ]);
   operations.Operation.forEach((operation) => {
-    //console.log("---- Operation foreach: ", operation);
     if (Array.isArray(operation.Item)) {
       operation.Item.forEach((item) => {
-        console.log("Operation Name: ", operation.Name)
-        console.log("Value: ", item.Value);
-        console.log("Type: ", item.Type);
+        tableData.push([operation.Name, item.Value, item.Type]);
       });
     } else {
-      console.log("Operation Name: ", operation.Name)
-      console.log("Value: ", operation.Item.Value);
-      console.log("Type: ", operation.Item.Type);
+      tableData.push([operation.Name, operation.Item.Value, operation.Item.Type]);
     }
-
-    //tableData.push([operation.Name, operation.ItemValue, operation.Type]);
   });
-  console.log("Table Data: ", tableData);
   return tableData;
 }
 
@@ -33276,7 +33263,7 @@ parseXmlReport(xmlFilePath)
     console.log("Result: ", result);
     console.log("Result operations: ", result.DeploymentReport.Operations);
     const tableData = transformToTableData(result.DeploymentReport.Operations);
-    //console.log("Table Data:", tableData);
+    console.log(">>>Table Data:", tableData);
   })
   .catch((err) => {
     console.error(err);
