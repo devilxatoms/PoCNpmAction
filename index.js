@@ -18,19 +18,20 @@ const { parseXmlReport } = require("./src/parseXmlReport");
 //  read xml file
 const xmlFilePath = "dummyData/dummy.xml";
 
-parseXmlReport(xmlFilePath, (err, result) => {
-  if (err) {
-    core.setFailed(err);
-    return;
-  }
-  console.log(result.DeploymentReport.Operations);
-  console.log("JSON DATA: ", JSON.stringify(result.DeploymentReport.Operations));
-});
+parseXmlReport
+  .parseXmlReport(xmlFilePath)
+  .then((result) => {
+    console.log(result.DeploymentReport.Operations);
+    console.log(
+      "JSON DATA: ",
+      JSON.stringify(result.DeploymentReport.Operations)
+    );
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
-
-
-/* // Wrap the code block containing `await` inside an asynchronous function
-async function run() {
+/* async function run() {
   await core.summary
     .addHeading("SQL Changes Applied")
     .addTable([

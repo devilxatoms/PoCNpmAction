@@ -31309,21 +31309,21 @@ exports["default"] = _default;
 const { parseString } = __nccwpck_require__(1071);
 const fs = __nccwpck_require__(7147);
 
-function parseXmlReport(xmlFilePath, callback) {
-  //console.log("-----> file path: ", xmlFilePath);
-  const xmlData = fs.readFileSync(xmlFilePath, "utf-8");
-  parseString(
-    xmlData,
-    { explicitArray: false, mergeAttrs: true },
-    (err, result) => {
-      if (err) {
-        callback(err, null);
-        return;
+function parseXmlReport(xmlFilePath) {
+  return new Promise((resolve, reject) => {
+    const xmlData = fs.readFileSync(xmlFilePath, "utf-8");
+    parseString(
+      xmlData,
+      { explicitArray: false, mergeAttrs: true },
+      (err, result) => {
+        if (err) {
+          reject(err);
+          return;
+        }
+        resolve(result);
       }
-      //console.log("-----> result: ", result);
-      callback(null, result);
-    }
-  );
+    );
+  });
 }
 
 module.exports = { parseXmlReport };
@@ -33243,19 +33243,20 @@ const { parseXmlReport } = __nccwpck_require__(3877);
 //  read xml file
 const xmlFilePath = "dummyData/dummy.xml";
 
-parseXmlReport(xmlFilePath, (err, result) => {
-  if (err) {
-    core.setFailed(err);
-    return;
-  }
-  console.log(result.DeploymentReport.Operations);
-  console.log("JSON DATA: ", JSON.stringify(result.DeploymentReport.Operations));
-});
+parseXmlReport
+  .parseXmlReport(xmlFilePath)
+  .then((result) => {
+    console.log(result.DeploymentReport.Operations);
+    console.log(
+      "JSON DATA: ",
+      JSON.stringify(result.DeploymentReport.Operations)
+    );
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
-
-
-/* // Wrap the code block containing `await` inside an asynchronous function
-async function run() {
+/* async function run() {
   await core.summary
     .addHeading("SQL Changes Applied")
     .addTable([
