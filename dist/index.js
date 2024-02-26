@@ -31310,7 +31310,7 @@ const { parseString } = __nccwpck_require__(1071);
 const fs = __nccwpck_require__(7147);
 
 function parseXmlReport(xmlFilePath, callback) {
-  console.log("-----> file path: ", xmlFilePath);
+  //console.log("-----> file path: ", xmlFilePath);
   const xmlData = fs.readFileSync(xmlFilePath, "utf-8");
   parseString(
     xmlData,
@@ -31320,7 +31320,7 @@ function parseXmlReport(xmlFilePath, callback) {
         callback(err, null);
         return;
       }
-      console.log("-----> result: ", result);
+      //console.log("-----> result: ", result);
       callback(null, result);
     }
   );
@@ -33227,7 +33227,6 @@ const core = __nccwpck_require__(4147);
 //const github = require("@actions/github");
 const { parseXmlReport } = __nccwpck_require__(3877);
 
-
 /* try {
   // `who-to-greet` input defined in action metadata file
   const nameToGreet = core.getInput("who-to-greet");
@@ -33243,16 +33242,16 @@ const { parseXmlReport } = __nccwpck_require__(3877);
 
 //  read xml file
 const xmlFilePath = "dummyData/dummy.xml";
-var dataResult = parseXmlReport(xmlFilePath, (err, result) => {
+const dataResult = parseXmlReport(xmlFilePath, (err, result) => {
   if (err) {
     core.setFailed(err);
     return;
   }
-  console.log(result.DeploymentReport.Operations);
+  //console.log(result.DeploymentReport.Operations);
   return result;
 });
 
-console.log("Data result: ",dataResult);
+console.log("Data result: ", dataResult);
 
 /* // Wrap the code block containing `await` inside an asynchronous function
 async function run() {

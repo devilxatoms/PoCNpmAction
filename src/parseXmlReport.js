@@ -2,7 +2,7 @@ const { parseString } = require("xml2js");
 const fs = require("fs");
 
 function parseXmlReport(xmlFilePath, callback) {
-  console.log("-----> file path: ", xmlFilePath);
+  //console.log("-----> file path: ", xmlFilePath);
   const xmlData = fs.readFileSync(xmlFilePath, "utf-8");
   parseString(
     xmlData,
@@ -12,7 +12,7 @@ function parseXmlReport(xmlFilePath, callback) {
         callback(err, null);
         return;
       }
-      console.log("-----> result: ", result);
+      //console.log("-----> result: ", result);
       callback(null, result);
     }
   );
