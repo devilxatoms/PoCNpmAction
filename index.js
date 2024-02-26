@@ -18,13 +18,14 @@ try {
 
 //  read xml file
 const xmlFilePath = core.getInput("dummyData/dummy.xml");
-parseXmlReport(xmlFilePath, (err, result) => {
+xmlResult = parseXmlReport(xmlFilePath, (err, result) => {
   if (err) {
     core.setFailed(err);
     return;
   }
-  console.log(result);
+  return result;
 });
+console.log(xmlResult);
 
 
 
