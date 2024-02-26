@@ -33250,7 +33250,7 @@ function transformToTableData(operations) {
   ]);
   operations.Operation.forEach((operation) => {
     console.log("---- Operation foreach: ", operation);
-    if (isArray(operation.Item)) {
+    if (Array.isArray(operation.Item)) {
       operation.Item.forEach((item) => {
         console.log("Value: ", item.Value);
         console.log("Type: ", item.Type);
