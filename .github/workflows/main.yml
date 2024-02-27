@@ -10,6 +10,6 @@ jobs:
 
       - name: Sql report summary
         id: sql-report-summary
-        uses: devilxatoms/PoCNpmAction@v1.36
+        uses: devilxatoms/PoCNpmAction@v1.37
         with:
           report-path: 'dummyData/dummy.xml'
