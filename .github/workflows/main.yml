@@ -10,4 +10,4 @@ jobs:
 
       - name: Sql report summary
         id: sql-report-summary
-        uses: devilxatoms/PoCNpmAction@v1.35
+        uses: devilxatoms/PoCNpmAction@v1.36
