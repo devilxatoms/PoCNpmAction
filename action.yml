@@ -1,13 +1,10 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'sqlpackage report summary'
+description: 'Summarize sqlpackage report'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  report-path:  # id of input
+    description: 'sqlpackage report path'
     required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+    default: 'artifacts/report.xml'
 runs:
   using: 'node20'
   main: 'dist/index.js'

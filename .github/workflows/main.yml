@@ -8,10 +8,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Hello world action step
-        id: hello
-        uses: devilxatoms/PoCNpmAction@v1.35
-
-      - name: add summary
-        id: summary
+      - name: Sql report summary
+        id: sql-report-summary
         uses: devilxatoms/PoCNpmAction@v1.35
