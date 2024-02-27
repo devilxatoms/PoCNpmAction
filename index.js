@@ -39,7 +39,7 @@ function transformToTableData(operations) {
 }
 
 // Read XML file and process the data
-const xmlFilePath = "dummyData/dummy.xml";
+const xmlFilePath = core.getInput("report-path");
 
 parseXmlReport(xmlFilePath)
   .then((result) => {
